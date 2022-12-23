@@ -63,3 +63,4 @@ frontend:
     memory: "200Mi"
   env:
     zipkin:  "http://tempo.monitoring:9411"
+    backend: "http://book-shop-backend:8080"

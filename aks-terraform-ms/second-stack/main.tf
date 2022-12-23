@@ -50,6 +50,7 @@ resource "kubernetes_secret" "postgresql2" {
     user = "appuser"
     password = "cHdk"
     url = "jdbc:postgresql://book-shop-postgres.default.svc.cluster.local:5432/bookshop"
+    database = "bookshop"
   }
 }
 

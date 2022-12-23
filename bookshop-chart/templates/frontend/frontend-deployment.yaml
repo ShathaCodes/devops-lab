@@ -29,3 +29,5 @@ spec:
         env:
         - name: SPRING_ZIPKIN_BASE_URL
           value: {{ .Values.frontend.env.zipkin }}
+        - name: BACKEND_PREFIX_URL
+          value: {{ .Values.frontend.env.backend }}
