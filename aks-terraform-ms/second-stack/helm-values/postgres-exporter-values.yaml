@@ -1,0 +1,15 @@
+serviceMonitor:
+  enabled: false
+
+config:
+  datasource:
+    host: "book-shop-postgres.default.svc.cluster.local"
+    user: "appuser"
+    passwordSecret: 
+      name: book-shop-postgres-secret
+      key: password
+    port: "5432"
+    database: "bookshop"
+    sslmode: disable
+  excludeDatabases: []
+
