@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Books search</title>
+</head>
+<body>
+
+<h1>
+    Search results
+</h1>
+<div class="jumbotron">
+    <h2>Search a book here !!</h2>
+    <form method="get" action="/search/book">
+        <div class="input-group">
+            <div class="form-outline div-search-books">
+                <input type="text" class="form-control" name="title">
+            </div>
+            <button id="search-button" type="button" class="btn btn-primary">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+        <th:block th:each="book : ${books}">
+            <tr>
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.quantity}"></td>
+                <td th:text="${book.genre}"></td>
+                <td>
+                    <a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-outline-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a  class="btn btn-outline-danger" th:href="@{/deleteBook(bookId=${book.id})}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </tr>
+        </th:block>
+        </thead>
+
+</body>
+</html>

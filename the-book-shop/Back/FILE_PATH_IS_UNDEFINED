@@ -1,0 +1,90 @@
+2022-12-21 15:56:29.619  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  :  Starting TheBookShopApplication using Java 11.0.11 on DESKTOP-VKBSMHL with PID 9588 (D:\observability-helm-charts\the-book-shop\Back\target\classes started by LENOVO in D:\observability-helm-charts\the-book-shop\Back)
+2022-12-21 15:56:29.621  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  :  No active profile set, falling back to 1 default profile: "default"
+2022-12-21 15:56:29.710  INFO 9588 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor :  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-21 15:56:29.710  INFO 9588 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor :  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-21 15:56:31.312  INFO 9588 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate :  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 15:56:31.396  INFO 9588 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate :  Finished Spring Data repository scanning in 70 ms. Found 1 JPA repository interfaces.
+2022-12-21 15:56:32.855  INFO 9588 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  :  Tomcat initialized with port(s): 8080 (http)
+2022-12-21 15:56:32.880  INFO 9588 --- [  restartedMain] o.apache.catalina.core.StandardService   :  Starting service [Tomcat]
+2022-12-21 15:56:32.881  INFO 9588 --- [  restartedMain] org.apache.catalina.core.StandardEngine  :  Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-12-21 15:56:33.152  INFO 9588 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       :  Initializing Spring embedded WebApplicationContext
+2022-12-21 15:56:33.153  INFO 9588 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext :  Root WebApplicationContext: initialization completed in 3442 ms
+2022-12-21 15:56:33.712  INFO 9588 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  :  HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 15:56:33.831  INFO 9588 --- [  restartedMain] org.hibernate.Version                    :  HHH000412: Hibernate ORM core version 5.6.5.Final
+2022-12-21 15:56:34.227  INFO 9588 --- [  restartedMain] o.hibernate.annotations.common.Version   :  HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-21 15:56:34.467  INFO 9588 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       :  HikariPool-1 - Starting...
+2022-12-21 15:56:34.764  INFO 9588 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       :  HikariPool-1 - Start completed.
+2022-12-21 15:56:34.810  INFO 9588 --- [  restartedMain] org.hibernate.dialect.Dialect            :  HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 15:56:36.049  INFO 9588 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       :  HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 15:56:36.060  INFO 9588 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean :  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 15:56:36.542  WARN 9588 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration :  spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 15:56:37.205  INFO 9588 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       :  LiveReload server is running on port 35729
+2022-12-21 15:56:37.212  INFO 9588 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      :  Exposing 3 endpoint(s) beneath base path '/actuator'
+2022-12-21 15:56:37.283  INFO 9588 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  :  Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-21 15:56:37.306  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  :  Started TheBookShopApplication in 9.125 seconds (JVM running for 9.991)
+2022-12-21 15:56:41.651  INFO 9588 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       :  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 15:56:41.655  INFO 9588 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        :  Initializing Servlet 'dispatcherServlet'
+2022-12-21 15:56:41.661  INFO 9588 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        :  Completed initialization in 6 ms
+2022-12-21 15:56:41.802  INFO 9588 --- [nio-8080-exec-1] c.b.controller.BookController            : 950b28be-d90e-42d3-b801-f3ec72790a5d GET /books
+2022-12-21 15:56:49.937  INFO 9588 --- [nio-8080-exec-4] c.b.controller.BookController            : 1a349c88-e395-47c0-9bb4-cb2c33a5d50b GET /books
+2022-12-21 15:56:50.643  INFO 9588 --- [nio-8080-exec-5] c.b.controller.BookController            : 486b40c2-c402-4e97-9742-c5cf55ca48c9 GET /books
+2022-12-21 15:57:39.174  INFO 9588 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean :  Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 15:57:39.179  INFO 9588 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       :  HikariPool-1 - Shutdown initiated...
+2022-12-21 15:57:39.190  INFO 9588 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       :  HikariPool-1 - Shutdown completed.
+2022-12-21 15:57:39.358  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  : request_id= Starting TheBookShopApplication using Java 11.0.11 on DESKTOP-VKBSMHL with PID 9588 (D:\observability-helm-charts\the-book-shop\Back\target\classes started by LENOVO in D:\observability-helm-charts\the-book-shop\Back)
+2022-12-21 15:57:39.358  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  : request_id= No active profile set, falling back to 1 default profile: "default"
+2022-12-21 15:57:39.847  INFO 9588 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : request_id= Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 15:57:39.858  INFO 9588 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : request_id= Finished Spring Data repository scanning in 10 ms. Found 1 JPA repository interfaces.
+2022-12-21 15:57:40.027  INFO 9588 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : request_id= Tomcat initialized with port(s): 8080 (http)
+2022-12-21 15:57:40.028  INFO 9588 --- [  restartedMain] o.apache.catalina.core.StandardService   : request_id= Starting service [Tomcat]
+2022-12-21 15:57:40.029  INFO 9588 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : request_id= Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-12-21 15:57:40.067  INFO 9588 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : request_id= Initializing Spring embedded WebApplicationContext
+2022-12-21 15:57:40.067  INFO 9588 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : request_id= Root WebApplicationContext: initialization completed in 704 ms
+2022-12-21 15:57:40.199  INFO 9588 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : request_id= HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 15:57:40.209  INFO 9588 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-2 - Starting...
+2022-12-21 15:57:40.233  INFO 9588 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-2 - Start completed.
+2022-12-21 15:57:40.234  INFO 9588 --- [  restartedMain] org.hibernate.dialect.Dialect            : request_id= HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 15:57:40.318  INFO 9588 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : request_id= HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 15:57:40.318  INFO 9588 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : request_id= Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 15:57:40.534  WARN 9588 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : request_id= spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 15:57:40.754  INFO 9588 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : request_id= LiveReload server is running on port 35729
+2022-12-21 15:57:40.759  INFO 9588 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : request_id= Exposing 3 endpoint(s) beneath base path '/actuator'
+2022-12-21 15:57:40.779  INFO 9588 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : request_id= Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-21 15:57:40.788  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  : request_id= Started TheBookShopApplication in 1.502 seconds (JVM running for 73.472)
+2022-12-21 15:57:40.792  INFO 9588 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : request_id= Condition evaluation unchanged
+2022-12-21 15:57:43.364  INFO 9588 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : request_id= Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 15:57:43.365  INFO 9588 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : request_id= Initializing Servlet 'dispatcherServlet'
+2022-12-21 15:57:43.368  INFO 9588 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : request_id= Completed initialization in 1 ms
+2022-12-21 15:57:43.373  INFO 9588 --- [nio-8080-exec-1] c.b.controller.BookController            : request_id=21af7e18-a3d3-476a-b946-6677b6d5b5a4 GET /books
+2022-12-21 15:57:49.006  INFO 9588 --- [nio-8080-exec-4] c.b.controller.BookController            : request_id=eef46e61-294b-4331-8938-ef735cb0d595 GET /books
+2022-12-21 15:58:11.108  INFO 9588 --- [       Thread-7] j.LocalContainerEntityManagerFactoryBean : request_id= Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 15:58:11.110  INFO 9588 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-2 - Shutdown initiated...
+2022-12-21 15:58:11.119  INFO 9588 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-2 - Shutdown completed.
+2022-12-21 15:58:11.278  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  : request_id= Starting TheBookShopApplication using Java 11.0.11 on DESKTOP-VKBSMHL with PID 9588 (D:\observability-helm-charts\the-book-shop\Back\target\classes started by LENOVO in D:\observability-helm-charts\the-book-shop\Back)
+2022-12-21 15:58:11.279  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  : request_id= No active profile set, falling back to 1 default profile: "default"
+2022-12-21 15:58:11.688  INFO 9588 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : request_id= Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 15:58:11.697  INFO 9588 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : request_id= Finished Spring Data repository scanning in 9 ms. Found 1 JPA repository interfaces.
+2022-12-21 15:58:11.836  INFO 9588 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : request_id= Tomcat initialized with port(s): 8080 (http)
+2022-12-21 15:58:11.838  INFO 9588 --- [  restartedMain] o.apache.catalina.core.StandardService   : request_id= Starting service [Tomcat]
+2022-12-21 15:58:11.839  INFO 9588 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : request_id= Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-12-21 15:58:11.890  INFO 9588 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : request_id= Initializing Spring embedded WebApplicationContext
+2022-12-21 15:58:11.892  INFO 9588 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : request_id= Root WebApplicationContext: initialization completed in 603 ms
+2022-12-21 15:58:12.015  INFO 9588 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : request_id= HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 15:58:12.023  INFO 9588 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-3 - Starting...
+2022-12-21 15:58:12.048  INFO 9588 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-3 - Start completed.
+2022-12-21 15:58:12.049  INFO 9588 --- [  restartedMain] org.hibernate.dialect.Dialect            : request_id= HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 15:58:12.126  INFO 9588 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : request_id= HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 15:58:12.127  INFO 9588 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : request_id= Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 15:58:12.260  WARN 9588 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : request_id= spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 15:58:12.435  INFO 9588 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : request_id= LiveReload server is running on port 35729
+2022-12-21 15:58:12.439  INFO 9588 --- [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : request_id= Exposing 3 endpoint(s) beneath base path '/actuator'
+2022-12-21 15:58:12.453  INFO 9588 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : request_id= Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-21 15:58:12.465  INFO 9588 --- [  restartedMain] com.bookshopback.TheBookShopApplication  : request_id= Started TheBookShopApplication in 1.269 seconds (JVM running for 105.149)
+2022-12-21 15:58:12.469  INFO 9588 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : request_id= Condition evaluation unchanged
+2022-12-21 15:58:19.658  INFO 9588 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : request_id= Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 15:58:19.660  INFO 9588 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : request_id= Initializing Servlet 'dispatcherServlet'
+2022-12-21 15:58:19.661  INFO 9588 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : request_id= Completed initialization in 1 ms
+2022-12-21 15:58:19.666  INFO 9588 --- [nio-8080-exec-1] c.b.controller.BookController            : request_id=5a7919e2-c57d-44dd-a767-53468c16864c GET /books
+2022-12-21 15:59:25.595  INFO 9588 --- [      Thread-11] j.LocalContainerEntityManagerFactoryBean : request_id= Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 15:59:25.596  INFO 9588 --- [      Thread-11] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-3 - Shutdown initiated...
+2022-12-21 15:59:25.605  INFO 9588 --- [      Thread-11] com.zaxxer.hikari.HikariDataSource       : request_id= HikariPool-3 - Shutdown completed.

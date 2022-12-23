@@ -1,0 +1,43 @@
+apiVersion: apps/v1             # API version
+kind: Deployment                # Type of kubernetes resource
+metadata:
+  name: book-shop-frontend      # Name of the kubernetes resource
+spec:
+  replicas: 1                   # No of replicas/pods to run
+  selector:                     
+    matchLabels:                # This deployment applies to Pods matching the specified labels
+      app: book-shop-frontend
+  template:                     # Template for creating the Pods in this deployment
+    metadata:
+      labels:                   # Labels that will be applied to all the Pods in this deployment
+        app: book-shop-frontend
+    spec:                       # Spec for the containers that will run inside the Pods
+      containers:
+      - name: book-shop-frontend
+        image: registry.gitlab.com/shathacodes/observability-helm-charts/bookshopfront
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 9000   # Should match the Port that the container listens on
+        env:                  
+        - name: SPRING_ZIPKIN_BASE_URL
+          value: "http://tempo.monitoring:9411"
+        resources:
+          limits:
+            cpu: 0.2
+            memory: "200Mi"
+      imagePullSecrets:
+      - name: gitlab-auth
+---
+apiVersion: v1                  # API version
+kind: Service                   # Type of kubernetes resource
+metadata:
+  name: book-shop-frontend      # Name of the kubernetes resource
+spec:
+  type: LoadBalancer                 # Exposes the service by opening a port on each node
+  selector:
+    app: book-shop-frontend     # Any Pod matching the label `app=book-shop-frontend` will be picked up by this service
+  ports:                        # Forward incoming connections on port 80 to the target port 80 in the Pod
+  - protocol: TCP
+    port: 9005
+    targetPort: 9000

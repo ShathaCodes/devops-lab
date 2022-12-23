@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet"
+	href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<head>
+<meta charset="UTF-8">
+<title>TheBookBoutique</title>
+</head>
+<body>
+
+	<h1 style="text-align: center; margin-top: 50px; margin-bottom: 50px">Book Inventory</h1>
+
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">Title</th>
+					<th scope="col">Author</th>
+					<th scope="col">Quantity</th>
+					<th scope="col">Genre</th>
+					<th scope="col">Price</th>
+					<th scope="col">Actions</th>
+
+				</tr>
+				<th:block th:each="book : ${books}">
+					<tr>
+						<td th:text="${book.id}"></td>
+						<td th:text="${book.title}"></td>
+						<td th:text="${book.author}"></td>
+						<td th:text="${book.quantity}"></td>
+						<td th:text="${book.genre}"></td>
+						<td th:text="${book.price}"></td>
+						<td><a th:href="@{/edit/{id}(id=${book.id})}"
+							class="btn btn-outline-primary edit"><i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> </a> <a
+							class="btn btn-outline-danger delete"
+							th:href="@{/deleteBook(bookId=${book.id})}"><i
+								class="fa fa-trash" aria-hidden="true"></i></a>
+					</tr>
+				</th:block>
+			</thead>
+
+		</table>
+		<div class="jumbotron" >
+			<h2>Add a new Book</h2>
+			<form method="post" action="/createBook" th:object="${book}">
+
+				<label for="title">Title</label> <input type="text"
+					class="form-control" name="title" id="title"> <label
+					for="author">Author</label> <input class="form-control" type="text"
+					name="author" id="author"> <label for="quantity">Quantity</label>
+				<input class="form-control" type="number" name="quantity"
+					id="quantity"> <label for="genre">Genre</label> <input
+					class="form-control" type="text" name="genre" id="genre"> <label
+					for="price">Price</label> <input class="form-control" type="number"
+					name="price" step="0.01" id="price"> <br>
+
+				<button class="btn" style="background-color:#1295AF; color:white" type="submit" id="submit-form">Create</button>
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>

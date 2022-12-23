@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Use Spring default values. -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5level) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %replace(trace_id=%X{traceId:-}){'trace_id=$', ''} %replace(span_id=%X{spanId:-}){'span_id=$', ''} %replace(request_id=%X{requestId}){'request_id=$', ''} %replace(ip_address=%X{ipAddr}){'ip_address=$', ''} %m%n%wEx"/>
+
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </layout>
+    </appender>
+
+    <!-- LOG everything at INFO level -->
+    <root level="info">
+        <springProfile name="default | local">
+            <appender-ref ref="Console"/>
+        </springProfile>
+    </root>
+</configuration>

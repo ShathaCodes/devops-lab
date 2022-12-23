@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<meta charset="UTF-8">
+<title>The Book Shop</title>
+<style>
+body, html {
+	height: 100%;
+	margin: 0;
+}
+
+.bg {
+	/* The image used */
+	background-image:
+		url("https://images.squarespace-cdn.com/content/v1/62f60c3e33f8726f9c0b25ec/ba3b1d35-5e43-485e-b9b8-d606ca6bae91/The+Margate+Bookshop+Shopfront.jpg");
+	/* Full height */
+	height: 100%;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.accessbtndiv {
+	width: 130px;
+	height: 150px;
+	border-radius: 5px;
+	position: relative;
+	top: 410px;
+	left: 1150px;
+	color: #1295AF;
+}
+
+.accessbtn {
+	background-color:#1295AF;
+	color: white;
+}
+</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="accessbtndiv">
+			<h4>Welcome to The Book shop</h4>
+			<form action="/books" method="get">
+				<button type="submit" class="btn accessbtn">Go to shop</button>
+
+			</form>
+		</div>
+
+	</div>
+
+</body>
+</html>
