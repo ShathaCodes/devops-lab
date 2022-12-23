@@ -1,0 +1,65 @@
+replicaCount: 1
+version : v1
+
+name: book-shop
+imagePullPolicy: IfNotPresent
+namespace: default
+
+monitoring:
+  namespace: monitoring
+
+postgres:
+  name: book-shop-postgres
+  container:
+    image: postgres:12.10
+    port: 5432
+  service:
+    type: ClusterIP
+    port: 5432
+  volume:
+    mountPath: /var/lib/postgresql/data
+    storageClassName: standard
+    accessMode: ReadWriteOnce
+    pv:
+      storage: 250Mi
+      hostPath: "/mnt/data"
+      persistentVolumeReclaimPolicy: Retain  
+    pvc:
+      storage: 250Mi
+      
+
+backend:
+  container:
+    image: shatha20/bookshopback
+    tag: devops
+    port: 8080
+  service:
+    type: ClusterIP
+    port: 8080
+    serviceMonitor:
+      serviceMonitorSelector: prometheus
+      interval: 30s
+      path: /actuator/prometheus
+  resources:
+    cpu: 0.2
+    memory: "300Mi"
+  env:
+    zipkin:  "http://tempo.monitoring:9411"
+
+frontend:
+  container:
+    image: shatha20/bookshopfront
+    tag: devops
+    port: 9000
+  service:
+    type: LoadBalancer
+    port: 9005
+    serviceMonitor:
+      serviceMonitorSelector: prometheus
+      interval: 30s
+      path: /actuator/prometheus
+  resources:
+    cpu: 0.2
+    memory: "200Mi"
+  env:
+    zipkin:  "http://tempo.monitoring:9411"

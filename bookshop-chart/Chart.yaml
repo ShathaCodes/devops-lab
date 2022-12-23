@@ -1,0 +1,17 @@
+apiVersion: v2
+name: bookshop-chart
+description: A Helm chart for Kubernetes to deploy a springboot app
+
+type: application
+keywords:
+  - database
+  - postgres
+  - springboot
+  - app
+version: 0.1.0
+appVersion: "1.16.0"
+
+home: https://github.com/ShathaCodes/bookshop-chart
+maintainers:
+  - name: Chadha Siala
+    url: https://github.com/ShathaCodes

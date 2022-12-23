@@ -23,7 +23,7 @@ spec:
             containerPort: 8080 
         resources:
           limits:
-            cpu: 0.2
+            cpu: "0.2"
             memory: "300Mi"
         env:                  
         - name: SPRING_DATASOURCE_USERNAME
@@ -43,8 +43,7 @@ spec:
               key: url
         - name: SPRING_ZIPKIN_BASE_URL
           value: "http://tempo.monitoring:9411"
-      imagePullSecrets:
-      - name: gitlab-auth
+
 ---
 apiVersion: v1                
 kind: Service                 
