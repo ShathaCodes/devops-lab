@@ -3,13 +3,13 @@ serviceMonitor:
 
 config:
   datasource:
-    host: "book-shop-postgres.default.svc.cluster.local"
-    user: "appuser"
+    host: "the-book-boutique-server.privatelink.postgres.database.azure.com"
+    user: "appuser@the-book-boutique-server"
     passwordSecret: 
       name: book-shop-postgres-secret
       key: password
     port: "5432"
     database: "bookshop"
-    sslmode: disable
+    sslmode: require
   excludeDatabases: []
 

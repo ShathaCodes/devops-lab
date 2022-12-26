@@ -8,100 +8,27 @@ data "terraform_remote_state" "aks" {
   }
 }
 
+resource "azurerm_kubernetes_cluster" "app" {
+  name                = "app-aks"
+  location            = data.terraform_remote_state.aks.outputs.resource_group_location
+  resource_group_name = data.terraform_remote_state.aks.outputs.resource_group_name
+  dns_prefix          = "appaks"
+  sku_tier            = "Free"
 
-resource "kubernetes_namespace" "example" {
-  metadata {
-    annotations = {
-      name = "example-annotation"
-    }
-    name = "monitoring"
-  }
-}
-
-resource "kubernetes_secret" "grafana" {
-  metadata {
-    name = "grafana-admin-credentials"
-    namespace = kubernetes_namespace.example.id
-  }
-  data = {
-    admin-user = "c2hhdGhh"
-    admin-password = "bWRw"
+  default_node_pool {
+    vnet_subnet_id = data.terraform_remote_state.aks.outputs.aks_subnet_id
+    name       = "default"
+    node_count = 1
+    vm_size    = "Standard_D2_v2"
   }
 
-}
+  identity {
+    type = "SystemAssigned"
+  }
 
-resource "kubernetes_secret" "postgresql" {
-  metadata {
-    name = "book-shop-postgres-secret"
-    namespace = kubernetes_namespace.example.id
-  }
-  data = {
-    user = "appuser"
-    password = "cHdk"
-    url = "jdbc:postgresql://book-shop-postgres.default.svc.cluster.local:5432/bookshop"
-  }
-}
-
-resource "kubernetes_secret" "postgresql2" {
-  metadata {
-    name = "book-shop-postgres-secret"
-  }
-  data = {
-    user = "appuser"
-    password = "cHdk"
-    url = "jdbc:postgresql://book-shop-postgres.default.svc.cluster.local:5432/bookshop"
-    database = "bookshop"
+  tags = {
+    Environment = "Development"
   }
 }
 
 
-resource "helm_release" "argocd" {
-  name       = "argocdproj"
-  repository = "https://argoproj.github.io/argo-helm"
-  chart      = "argo-cd"
-  namespace  = kubernetes_namespace.example.id
-}
-
-resource "helm_release" "prometheus" {
-  name       = "prometheus"
-  repository = "https://prometheus-community.github.io/helm-charts"
-  chart      = "kube-prometheus-stack"
-  namespace  = kubernetes_namespace.example.id
-
-  values = [
-    "${file("./helm-values/kube-prometheus-stack-values.yaml")}"
-  ]
-
-}
-
-
-resource "helm_release" "loki" {
-  name       = "loki"
-  repository = "https://grafana.github.io/helm-charts"
-  chart      = "loki-stack"
-  namespace  = kubernetes_namespace.example.id
-}
-
-resource "helm_release" "tempo" {
-  name       = "tempo"
-  repository = "https://grafana.github.io/helm-charts"
-  chart      = "tempo"
-  namespace  = kubernetes_namespace.example.id
-
-  values = [
-    "${file("./helm-values/tempo-values.yaml")}"
-  ]
-
-}
-
-resource "helm_release" "postgres" {
-  name       = "postgres-exporter"
-  repository = "https://prometheus-community.github.io/helm-charts"
-  chart      = "prometheus-postgres-exporter"
-  namespace  = kubernetes_namespace.example.id
-
-  values = [
-    "${file("./helm-values/postgres-exporter-values.yaml")}"
-  ]
-
-}

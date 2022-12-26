@@ -1,3 +1,4 @@
 first-stack/.terraform*
 second-stack/.terraform*
-second-stack/.helm*
+third-stack/.helm*
+third-stack/.terraform*

@@ -1,2 +1,0 @@
-environment = "dev"
-namespace = "gl"
