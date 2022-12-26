@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.name }}-front
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - host: {{ .Values.name }}.com
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .Values.name }}-front-svc
+          servicePort: {{ .Values.front.service.port }}
