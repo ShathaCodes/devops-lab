@@ -14,9 +14,6 @@ metadata:
   name: my-network-policy
   namespace: {{ .Values.namespace }}
 spec:
-  namespaceSelector:
-    matchLabels: # matchExpression
-      kubernetes.io/metadata.name: {{ .Values.namespace }}
   podSelector:
     matchLabels:
       app: {{ .Values.name }}-back
