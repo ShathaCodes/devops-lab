@@ -1,7 +1,7 @@
 apiVersion: v1                
 kind: Service                 
 metadata:                     
-  name: {{ .Values.name }}-front-svc 
+  name: {{ .Values.name }}-front
   labels:                     
     app: {{ .Values.name }}-front 
   namespace: {{ .Values.namespace }}

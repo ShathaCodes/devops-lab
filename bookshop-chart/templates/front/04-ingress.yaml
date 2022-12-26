@@ -10,5 +10,5 @@
 #    http:
 #      paths:
 #      - backend:
-#          serviceName: {{ .Values.name }}-front-svc
+#          serviceName: {{ .Values.name }}-front
 #          servicePort: {{ .Values.front.service.port }}
