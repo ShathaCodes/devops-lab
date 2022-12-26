@@ -45,4 +45,4 @@ front:
     memory: "200Mi"
   env:
     zipkin:  "http://tempo.monitoring:9411"
-    backend: "http://book-shop-back.webapp:8080"
+    backend: "http://book-shop-back:8080"
