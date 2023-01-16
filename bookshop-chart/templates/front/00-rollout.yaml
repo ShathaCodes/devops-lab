@@ -13,11 +13,6 @@ spec:
     matchLabels:              
       app: {{ .Values.name }}-front-{{ .Values.version }}
       version: {{ .Values.version }}
-  template:                   
-    metadata:
-      labels:                 
-        app: {{ .Values.name }}-front-{{ .Values.version }}
-        version: {{ .Values.version }}
   workloadRef: 
     apiVersion: apps/v1
     kind: Deployment
