@@ -23,8 +23,8 @@ back:
       interval: 30s
       path: /actuator/prometheus
   resources:
-    cpu: 0.4
-    memory: "600Mi"
+    cpu: 0.2
+    memory: "400Mi"
   env:
     zipkin:  "http://tempo.monitoring:9411"
 
@@ -41,7 +41,7 @@ front:
       interval: 30s
       path: /actuator/prometheus
   resources:
-    cpu: 0.4
-    memory: "500Mi"
+    cpu: 0.2
+    memory: "400Mi"
   env:
     zipkin:  "http://tempo.monitoring:9411"
