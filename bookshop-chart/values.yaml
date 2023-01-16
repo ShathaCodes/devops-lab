@@ -34,7 +34,7 @@ front:
     tag: devops
     port: 9000
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 9005
     serviceMonitor:
       serviceMonitorSelector: prometheus
@@ -45,4 +45,3 @@ front:
     memory: "200Mi"
   env:
     zipkin:  "http://tempo.monitoring:9411"
-    backend: "http://book-shop-back:8080"

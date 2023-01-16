@@ -36,4 +36,4 @@ spec:
         - name: SPRING_ZIPKIN_BASE_URL
           value: {{ .Values.front.env.zipkin }}
         - name: BACKEND_PREFIX_URL
-          value: {{ .Values.front.env.backend }}
+          value: http://{{ .Values.name }}-back-{{ .Values.version }}:{{ .Values.back.service.port }}
