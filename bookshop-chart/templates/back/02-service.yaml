@@ -1,14 +1,16 @@
 apiVersion: v1                
 kind: Service                 
 metadata:                     
-  name: {{ .Values.name }}-back
+  name: {{ .Values.name }}-back-{{ .Values.version }}
   labels:                     
-    app: {{ .Values.name }}-back 
+    app: {{ .Values.name }}-back-{{ .Values.version }}
+    version: {{ .Values.version }}
   namespace: {{ .Values.namespace }}
 spec:                         
   type: {{ .Values.back.service.type }}  	
   selector:
-    app: {{ .Values.name }}-back  
+    app: {{ .Values.name }}-back-{{ .Values.version }}
+    version: {{ .Values.version }}  
   ports:                      
   - port: {{ .Values.back.service.port }}  	
     protocol: TCP

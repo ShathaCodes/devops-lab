@@ -5,7 +5,7 @@ name: book-shop
 imagePullPolicy: IfNotPresent
 namespace: webapp
 deploymentLabels:
-  tier: test
+  tier: presentation
 
 monitoring:
   namespace: monitoring

@@ -15,4 +15,5 @@ spec:
     - {{ .Values.namespace }}
   selector:
     matchLabels:
-      app: {{ .Values.name }}-front
+      app: {{ .Values.name }}-front-{{ .Values.version }}
+      version: {{ .Values.version }} 

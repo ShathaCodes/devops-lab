@@ -7,6 +7,15 @@ data "terraform_remote_state" "aks" {
     key                  = "second-stack.tfstate"
   }
 }
+data "terraform_remote_state" "bd" {
+  backend = "azurerm"
+  config = {
+    resource_group_name  = "automation"
+    storage_account_name = "gl52"
+    container_name       = "infra-state"
+    key                  = "first-stack.tfstate"
+  }
+}
 
 
 resource "kubernetes_namespace" "example" {
@@ -18,18 +27,6 @@ resource "kubernetes_namespace" "example" {
   }
 }
 
-resource "kubernetes_secret" "grafana" {
-  metadata {
-    name      = "grafana-admin-credentials"
-    namespace = kubernetes_namespace.example.id
-  }
-  data = {
-    admin-user     = "c2hhdGhh"
-    admin-password = "bWRw"
-  }
-
-}
-
 resource "kubernetes_secret" "postgresql" {
   metadata {
     name      = "book-shop-postgres-secret"
@@ -38,7 +35,7 @@ resource "kubernetes_secret" "postgresql" {
   data = {
     user     = var.login
     password = var.password
-    url      = "jdbc:postgresql://the-book-boutique-server.privatelink.postgres.database.azure.com:5432/bookshop?sslmode=require"
+    url      = "jdbc:postgresql://${data.terraform_remote_state.bd.outputs.server_name}.${data.terraform_remote_state.bd.outputs.dns_name}:5432/${data.terraform_remote_state.bd.outputs.bd_name}?sslmode=require"
   }
 }
 
@@ -86,9 +83,6 @@ resource "helm_release" "loki" {
   chart      = "loki-stack"
   namespace  = kubernetes_namespace.example.id
 
-  values = [
-    "${file("./helm-values/loki-stack-values.yaml")}"
-  ]
 }
 
 resource "helm_release" "tempo" {

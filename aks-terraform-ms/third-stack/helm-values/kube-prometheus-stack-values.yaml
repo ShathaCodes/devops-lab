@@ -41,12 +41,10 @@ grafana:
   forceDeployDatasources: false
   forceDeployDashboards: false
   defaultDashboardsEnabled: true
+  service:
+    type: LoadBalancer
   serviceMonitor:
     enabled: true
-  admin:
-    existingSecret: grafana-admin-credentials
-    userKey: admin-user
-    passwordKey: admin-password
   additionalDataSources:
     - name: Loki
       type: loki

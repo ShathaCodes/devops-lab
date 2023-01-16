@@ -3,8 +3,8 @@ serviceMonitor:
 
 config:
   datasource:
-    host: "the-book-boutique-server.privatelink.postgres.database.azure.com"
-    user: "appuser@the-book-boutique-server"
+    host: "the-book-shop-server.privatelink.postgres.database.azure.com"
+    user: "appuser@the-book-shop-server"
     passwordSecret: 
       name: book-shop-postgres-secret
       key: password

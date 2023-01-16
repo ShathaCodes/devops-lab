@@ -16,14 +16,16 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: {{ .Values.name }}-back
+      app: {{ .Values.name }}-back-{{ .Values.version }}
+      version: {{ .Values.version }}
   policyTypes:
     - Ingress
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              app: {{ .Values.name }}-front  
+              app: {{ .Values.name }}-front-{{ .Values.version }}
+              version: {{ .Values.version }}  
       ports:
         - protocol: TCP
           port: {{ .Values.back.container.port }}

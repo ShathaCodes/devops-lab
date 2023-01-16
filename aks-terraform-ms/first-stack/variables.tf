@@ -1,5 +1,5 @@
 variable "name_prefix" {
-  default     = "the-book-boutique"
+  default     = "the-book-shop"
   description = "Prefix of the resource name."
 }
 variable "resource_group_name" {
@@ -9,14 +9,11 @@ variable "resource_group_name" {
 }
 variable "login" {
   type    = string
-  default = "---------"
 }
 
 variable "password" {
   type    = string
-  default = "---------"
 }
 variable "database" {
   type    = string
-  default = "--------"
 }

@@ -1,19 +1,25 @@
 apiVersion: apps/v1            
 kind: Deployment                
 metadata:
-  name: {{ .Values.name }}-front      
+  name: {{ .Values.name }}-front-{{ .Values.version }}    
   labels:                     
-    app: {{ .Values.name }}-front 
+    app: {{ .Values.name }}-front-{{ .Values.version }}
+    version: {{ .Values.version }}
+    {{- range $key, $val := .Values.deploymentLabels }}
+    {{ $key }}: {{ $val | quote }}
+    {{- end}}
   namespace: {{ .Values.namespace }} 
 spec:
   replicas:  {{ .Values.replicaCount }}                    
   selector:                     
     matchLabels:                
-      app: {{ .Values.name }}-front 
+      app: {{ .Values.name }}-front-{{ .Values.version }}
+      version: {{ .Values.version }}
   template:                     
     metadata:
       labels:                   
-        app: {{ .Values.name }}-front 
+        app: {{ .Values.name }}-front-{{ .Values.version }}
+        version: {{ .Values.version }}
     spec:                       
       containers:
       - name: {{ .Values.name }}-front 
