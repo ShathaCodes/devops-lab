@@ -9,13 +9,28 @@ metadata:
 spec:
   revisionHistoryLimit: 3
   replicas: {{ .Values.replicaCount }}                 
-  selector:
-    matchLabels:              
+  selector:                     
+    matchLabels:                
       app: {{ .Values.name }}-front-{{ .Values.version }}
-  workloadRef: 
-    apiVersion: apps/v1
-    kind: Deployment
-    name: {{ .Values.name }}-front-v1         
+      version: {{ .Values.version }}
+  template:                     
+    metadata:
+      labels:                   
+        app: {{ .Values.name }}-front-{{ .Values.version }}
+        version: {{ .Values.version }}
+    spec:                       
+      containers:
+      - name: {{ .Values.name }}-front 
+        image: {{ .Values.front.container.image }}:{{ .Values.front.container.tag }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }} 
+        ports:
+          - name:  front-port
+            containerPort: {{ .Values.front.container.port }} 
+        env:
+        - name: SPRING_ZIPKIN_BASE_URL
+          value: {{ .Values.front.env.zipkin }}
+        - name: BACKEND_PREFIX_URL
+          value: http://{{ .Values.name }}-back-{{ .Values.version }}:{{ .Values.back.service.port }}        
   strategy:
     blueGreen:
       autoPromotionEnabled: false
