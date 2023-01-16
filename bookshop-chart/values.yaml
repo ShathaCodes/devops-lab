@@ -22,9 +22,6 @@ back:
       serviceMonitorSelector: prometheus
       interval: 30s
       path: /actuator/prometheus
-  resources:
-    cpu: 0.2
-    memory: "400Mi"
   env:
     zipkin:  "http://tempo.monitoring:9411"
 
@@ -40,8 +37,5 @@ front:
       serviceMonitorSelector: prometheus
       interval: 30s
       path: /actuator/prometheus
-  resources:
-    cpu: 0.2
-    memory: "400Mi"
   env:
     zipkin:  "http://tempo.monitoring:9411"

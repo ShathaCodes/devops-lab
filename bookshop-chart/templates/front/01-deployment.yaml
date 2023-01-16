@@ -28,10 +28,6 @@ spec:
         ports:
           - name:  front-port
             containerPort: {{ .Values.front.container.port }} 
-        resources:
-          limits:
-            cpu: {{ .Values.front.resources.cpu }}
-            memory: {{ .Values.front.resources.memory }} 
         env:
         - name: SPRING_ZIPKIN_BASE_URL
           value: {{ .Values.front.env.zipkin }}
