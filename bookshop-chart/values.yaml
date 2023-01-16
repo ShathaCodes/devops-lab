@@ -16,7 +16,7 @@ back:
     tag: devops
     port: 8080
   service:
-    type: ClusterIP
+    type: LoadBalancer
     port: 8080
     serviceMonitor:
       serviceMonitorSelector: prometheus
