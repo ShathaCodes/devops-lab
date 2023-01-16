@@ -73,7 +73,7 @@ We will be building both Back and Front using Docker then we will use Kubernetes
 ## Deployment architecture
 
 This is the architecture for the Monitoring setup :
-![arch](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/arch.PNG)
+![arch](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/arch.png)
 
 I used Helm Charts to deploy it.
 
