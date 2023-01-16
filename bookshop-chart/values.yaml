@@ -34,7 +34,7 @@ front:
     tag: devops
     port: 9000
   service:
-    type: ClusterIP
+    type: LoadBalancer
     port: 9005
     serviceMonitor:
       serviceMonitorSelector: prometheus
