@@ -4,6 +4,11 @@ This project is part of **GL5 DevOps Lab**. We are meant to create a distributed
 
 **The Book Shop** is an application that manages a book inventory. It's a Frontend/Backend application with basic CRUD features, developed using **Spring Boot** and it interrogates a **PostgreSQL** database.
 
+You can access the website [here](http://thebookshop.westeurope.cloudapp.azure.com:9005)
+
+![exec](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/results.PNG)
+![old](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/old.PNG)
+
 # Observability
 
 In this part, we will focus on the three pillars of Observability:
@@ -13,6 +18,9 @@ I used **Apache Log4j** to enable logging in my application.
 
 I made sure to add the ``request_id`` and the ``ip_address`` in every log so that it can help us while debugging.
 
+![logs](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/logs.PNG)
+
+
 ## 2. Metrics
 I used **Spring Boot Actuator** which exposes metrics to be pulled by Prometheus. 
 
@@ -20,12 +28,17 @@ Behind the hoods, Spring Boot Actuator uses Micrometer to instrument and capture
 
 **Business logic metrics** : I added a custom metric which is ``low.inventory.count``. Basically after each creation/update of a book in The Book Shop, a query is run to check for books with inventory count lower than 3. The resulting books are shown in a **dimensional Gauge** with 2 different tags : the book id and the book title so that way we can track and restock those books.
 
+![metrics](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/metrics.PNG)
+![metrics2](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/metrics2.PNG)
+
 ## 3. Traces
 I used **Spring Cloud Sleuth** which provides Spring Boot auto-configuration for distributed tracing.
 
 I added **spring-cloud-sleuth-zipkin** so that the app will generate and report Zipkin-compatible traces via HTTP. 
 
 The ``span_id`` and the ``trace_id`` are shown in each logs for both Backend and Frontend.
+
+![trace](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/trace.PNG)
 
 # Automation
 
@@ -45,6 +58,8 @@ To automate the deployment of my webapp, I created a **Helm Chart** for it which
 
 To be noted, we can multiple additional labels to a deployment, we can change the image name and/or tag, we can specify the number of replicas, and the list goes on. You can see the values you can change in the ``values.yaml`` file.
 
+I used **Argo CD** to automate deployment of my chart from my github repo.
+
 ## 3. Multi-environment setup
 
 To be able to use myltiple environments at once, I added a ``version`` label in my deployments and services as well as for selectors. This can be used to match pods to deployments or a deployment to a service not only by the app name but now also with the version. 
@@ -57,11 +72,30 @@ We will be building both Back and Front using Docker then we will use Kubernetes
 
 ## Deployment architecture
 
-TODO
+This is the architecture for the Monitoring setup :
+![arch](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/arch.PNG)
+
+I used Helm Charts to deploy it.
 
 ## Deployment strategy
 
 I decided to use the **Blue/Green** deployment strategy since it gives us instant rollout/rollback and the quantity of ressources isn't really a big issue since I'm using the cloud.
 
-In order to implement it, I ....
+This can easily work with **Argo CD**. Basically when we change the version and **synch** the application (without choosing the prune option) it will create all the kubernetes resources with the new version ( since the version is contained in the name of the resources, except for the front service). 
+
+![argo](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/argo.PNG)
+![argo2](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/argo2.PNG)
+
+The front will be updated with the new version label, so it will redirect traffic to the new deployment.
+
+![new](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/new.PNG)
+
+
+After that, we can simply **synch** the application but this time with the prune option so that the old versioned resources would be deleted.
+
+![argo3](https://raw.githubusercontent.com/ShathaCodes/devops-lab/main/screenshots/argo3.PNG)
+
+
+
+
 
