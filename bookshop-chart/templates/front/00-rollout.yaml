@@ -18,10 +18,10 @@ spec:
       labels:                 
         app: {{ .Values.name }}-front-{{ .Values.version }}
         version: {{ .Values.version }}
-    workloadRef: 
-      apiVersion: apps/v1
-      kind: Deployment
-      name: {{ .Values.name }}-front-v1         
+  workloadRef: 
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.name }}-front-v1         
   strategy:
     blueGreen:
       autoPromotionEnabled: false
