@@ -43,9 +43,13 @@ I used **Terraform** to build 3 microstacks:
 
 To automate the deployment of my webapp, I created a **Helm Chart** for it which will be used by **Argo CD** for deployment. Basically each time argo cd detects a change in the chart in thhis repo, it will automatically synchronize the web app thus resulting in automated deployment.
 
+To be noted, we can multiple additional labels to a deployment, we can change the image name and/or tag, we can specify the number of replicas, and the list goes on. You can see the values you can change in the ``values.yaml`` file.
+
 ## 3. Multi-environment setup
 
-TODO
+To be able to use myltiple environments at once, I added a ``version`` label in my deployments and services as well as for selectors. This can be used to match pods to deployments or a deployment to a service not only by the app name but now also with the version. 
+
+This will come in handy in the next steps.
 
 # Deployment
 
@@ -57,6 +61,7 @@ TODO
 
 ## Deployment strategy
 
-TODO
+I decided to use the **Blue/Green** deployment strategy since it gives us instant rollout/rollback and the quantity of ressources isn't really a big issue since I'm using the cloud.
 
+In order to implement it, I ....
 
