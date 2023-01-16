@@ -37,7 +37,7 @@ I used **Terraform** to build 3 microstacks:
 1. **First Stack : Database and Networking :** here I provisioned the **Azure Database for PostgreSQL** server and database for our webapp. I also created a Virtual Network and a Subnet where our webapp will run and linked it to the database using **Azure Private Link** and a **Private DNS** for the PostgreSQL server.
 1. **Second Stack : Kubernetes Cluster :** here I provisioned an AKS cluster whithin the subnet created earlier ( and resource group as well ).
 
-1. **Third Stack : Monitoring Setup :** here I created the monitoring setup for our webapp using Kubernetes provider as well as Helm provider. This Stack will create a Kubernetes namespace for our monitoring setup then using Helm, it will install the **Prometheus Stack**, **Loki Stack (with Grafana)**, **Tempo**, **Postgresql-exporter** to monitor our PostgreSQL server and **Argo cd** ( will be used in the next step )
+1. **Third Stack : Monitoring Setup :** here I created the monitoring setup for our webapp using Kubernetes provider as well as Helm provider. This Stack will create a Kubernetes namespace for our monitoring setup then using Helm, it will install the **Prometheus Stack**, **Loki Stack (with Grafana)**, **Tempo**, **Postgresql-exporter** to monitor our PostgreSQL server and **Argo cd** ( will be used in the next step ). For organization, I split those different charts into 4 ``modules`` so we can reuse them whenever.
 
 ## 2. Automated Deployment
 

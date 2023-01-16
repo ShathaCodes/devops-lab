@@ -76,26 +76,3 @@ resource "azurerm_private_endpoint" "privateendpoint" {
     is_manual_connection           = false
   }
 }
-
-#resource "azurerm_kubernetes_cluster" "app" {
-#  name                = "app-aks"
-#  location            = azurerm_resource_group.example.location
-#  resource_group_name = azurerm_resource_group.example.name
-#  dns_prefix          = "appaks"
-#  sku_tier            = "Free"
-#
-#  default_node_pool {
-#    vnet_subnet_id = azurerm_subnet.aks_subnet.id
-#    name           = "default"
-#    node_count     = 1
-#    vm_size        = "Standard_D2_v2"
-#  }
-#
-#  identity {
-#    type = "SystemAssigned"
-#  }
-#
-#  tags = {
-#    Environment = "Development"
-#  }
-#}

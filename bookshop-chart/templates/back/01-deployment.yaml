@@ -1,52 +1,52 @@
 apiVersion: apps/v1           
-#kind: Deployment              
-#metadata:
-#  name: {{ .Values.name }}-back-{{ .Values.version }}    
-#  labels:                     
-#    app: {{ .Values.name }}-back-{{ .Values.version }}
-#    version: {{ .Values.version }}
-#    {{- range $key, $val := .Values.deploymentLabels }}
-#    {{ $key }}: {{ $val | quote }}
-#    {{- end}}
-#  namespace: {{ .Values.namespace }}
-#spec:
-#  replicas: {{ .Values.replicaCount }}                 
-#  selector:
-#    matchLabels:              
-#      app: {{ .Values.name }}-back-{{ .Values.version }}
-#      version: {{ .Values.version }}
-#  template:                   
-#    metadata:
-#      labels:                 
-#        app: {{ .Values.name }}-back-{{ .Values.version }}
-#        version: {{ .Values.version }}
-#    spec:                     
-#      containers:
-#      - name: {{ .Values.name }}-back  
-#        image: {{ .Values.back.container.image }}:{{ .Values.back.container.tag }}
-#        imagePullPolicy: {{ .Values.imagePullPolicy }} 
-#        ports:
-#          - name:  back-port
-#            containerPort: {{ .Values.back.container.port }}   
-#        resources:
-#          limits:
-#            cpu: {{ .Values.back.resources.cpu }}
-#            memory: {{ .Values.back.resources.memory }} 
-#        env:                  
-#        - name: SPRING_DATASOURCE_USERNAME
-#          valueFrom:
-#            secretKeyRef:
-#              name: book-shop-postgres-secret
-#              key: user
-#        - name: SPRING_DATASOURCE_PASSWORD
-#          valueFrom:
-#            secretKeyRef:
-#              name: book-shop-postgres-secret
-#              key: password
-#        - name: SPRING_DATASOURCE_URL
-#          valueFrom:
-#            secretKeyRef:
-#              name: book-shop-postgres-secret
-#              key: url
-#        - name: SPRING_ZIPKIN_BASE_URL
-#          value: {{ .Values.back.env.zipkin }} #
+kind: Deployment              
+metadata:
+  name: {{ .Values.name }}-back-{{ .Values.version }}    
+  labels:                     
+    app: {{ .Values.name }}-back-{{ .Values.version }}
+    version: {{ .Values.version }}
+    {{- range $key, $val := .Values.deploymentLabels }}
+    {{ $key }}: {{ $val | quote }}
+    {{- end}}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}                 
+  selector:
+    matchLabels:              
+      app: {{ .Values.name }}-back-{{ .Values.version }}
+      version: {{ .Values.version }}
+  template:                   
+    metadata:
+      labels:                 
+        app: {{ .Values.name }}-back-{{ .Values.version }}
+        version: {{ .Values.version }}
+    spec:                     
+      containers:
+      - name: {{ .Values.name }}-back  
+        image: {{ .Values.back.container.image }}:{{ .Values.back.container.tag }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }} 
+        ports:
+          - name:  back-port
+            containerPort: {{ .Values.back.container.port }}   
+        resources:
+          limits:
+            cpu: {{ .Values.back.resources.cpu }}
+            memory: {{ .Values.back.resources.memory }} 
+        env:                  
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: book-shop-postgres-secret
+              key: user
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: book-shop-postgres-secret
+              key: password
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            secretKeyRef:
+              name: book-shop-postgres-secret
+              key: url
+        - name: SPRING_ZIPKIN_BASE_URL
+          value: {{ .Values.back.env.zipkin }} 

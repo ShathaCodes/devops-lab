@@ -27,84 +27,35 @@ resource "kubernetes_namespace" "example" {
   }
 }
 
-resource "kubernetes_secret" "postgresql" {
-  metadata {
-    name      = "book-shop-postgres-secret"
-    namespace = kubernetes_namespace.example.id
+module "argo_cd" {
+  source = "./modules/argocd"
+  providers = {
+    helm = helm
   }
-  data = {
-    user     = var.login
-    password = var.password
-    url      = "jdbc:postgresql://${data.terraform_remote_state.bd.outputs.server_name}.${data.terraform_remote_state.bd.outputs.dns_name}:5432/${data.terraform_remote_state.bd.outputs.bd_name}?sslmode=require"
+  namespace = kubernetes_namespace.example.id
+}
+module "loki" {
+  source = "./modules/loki"
+  providers = {
+    helm = helm
   }
+  namespace = kubernetes_namespace.example.id
 }
-
-
-resource "helm_release" "argocd" {
-  name       = "argocd"
-  repository = "https://argoproj.github.io/argo-helm"
-  chart      = "argo-cd"
-  namespace  = kubernetes_namespace.example.id
-
-  values = [
-    "${file("./helm-values/argocd-values.yaml")}"
-  ]
-
+module "prometheus" {
+  source = "./modules/prometheus"
+  providers = {
+    helm       = helm
+    kubernetes = kubernetes
+  }
+  namespace = kubernetes_namespace.example.id
+  user      = var.login
+  password  = var.password
+  dburl       = "jdbc:postgresql://${data.terraform_remote_state.bd.outputs.server_name}.${data.terraform_remote_state.bd.outputs.dns_name}:5432/${data.terraform_remote_state.bd.outputs.bd_name}?sslmode=require"
 }
-
-#resource "helm_release" "ingress" {
-#  name       = "ingress-nginx"
-#  repository = "https://kubernetes.github.io/ingress-nginx"
-#  chart      = "ingress-nginx"
-#  namespace  = "default"
-#
-#  values = [
-#    "${file("./helm-values/ingress-values.yaml")}"
-#  ]
-#
-#}
-
-resource "helm_release" "prometheus" {
-  name       = "prometheus"
-  repository = "https://prometheus-community.github.io/helm-charts"
-  chart      = "kube-prometheus-stack"
-  namespace  = kubernetes_namespace.example.id
-
-  values = [
-    "${file("./helm-values/kube-prometheus-stack-values.yaml")}"
-  ]
-
-}
-
-
-resource "helm_release" "loki" {
-  name       = "loki"
-  repository = "https://grafana.github.io/helm-charts"
-  chart      = "loki-stack"
-  namespace  = kubernetes_namespace.example.id
-
-}
-
-resource "helm_release" "tempo" {
-  name       = "tempo"
-  repository = "https://grafana.github.io/helm-charts"
-  chart      = "tempo"
-  namespace  = kubernetes_namespace.example.id
-
-  values = [
-    "${file("./helm-values/tempo-values.yaml")}"
-  ]
-
-}
-
-resource "helm_release" "postgres" {
-  name       = "postgres-exporter"
-  repository = "https://prometheus-community.github.io/helm-charts"
-  chart      = "prometheus-postgres-exporter"
-  namespace  = kubernetes_namespace.example.id
-
-  values = [
-    "${file("./helm-values/postgres-exporter-values.yaml")}"
-  ]
-
+module "tempo" {
+  source = "./modules/tempo"
+  providers = {
+    helm = helm
+  }
+  namespace = kubernetes_namespace.example.id
 }
