@@ -35,4 +35,22 @@ spec:
     blueGreen:
       autoPromotionEnabled: false
       activeService: {{ .Values.name }}-front-{{ .Values.version }}
-      previewService: {{ .Values.name }}-front-v1
+      previewService: {{ .Values.name }}-front-preview
+---
+apiVersion: v1                
+kind: Service                 
+metadata:                     
+  name: {{ .Values.name }}-front-preview
+  labels:                     
+    app: {{ .Values.name }}-front-{{ .Values.version }}
+    version: {{ .Values.version }} 
+  namespace: {{ .Values.namespace }}
+spec:                         
+  type: {{ .Values.front.service.type }}  	
+  selector:
+    app: {{ .Values.name }}-front-{{ .Values.version }}
+    version: {{ .Values.version }}  
+  ports:                      
+  - port: {{ .Values.front.service.port }}  	
+    protocol: TCP
+    targetPort: {{ .Values.front.container.port }}  	
