@@ -3,7 +3,7 @@ kind: Service
 metadata:                     
   name: {{ .Values.name }}-front-{{ .Values.version }}
   annotations:
-    service.beta.kubernetes.io/azure-dns-label-name: bookshop
+    service.beta.kubernetes.io/azure-dns-label-name: thebookshop
   labels:                     
     app: {{ .Values.name }}-front-{{ .Values.version }}
     version: {{ .Values.version }} 
