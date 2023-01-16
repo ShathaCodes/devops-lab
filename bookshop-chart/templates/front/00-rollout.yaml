@@ -34,8 +34,8 @@ spec:
   strategy:
     blueGreen:
       autoPromotionEnabled: false
-      activeService: {{ .Values.name }}-front-{{ .Values.version }}
-      previewService: {{ .Values.name }}-front-preview
+      activeService: {{ .Values.name }}-front-preview 
+      previewService: {{ .Values.name }}-front-{{ .Values.version }}
 ---
 apiVersion: v1                
 kind: Service                 
