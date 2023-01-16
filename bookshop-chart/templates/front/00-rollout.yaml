@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ .Values.name }}-front-rollout
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.name }}-front-{{ .Values.version }}
+    version: {{ .Values.version }}
+    chart: {{ template "bookshop-chart.chart" . }}
+spec:
+  revisionHistoryLimit: 3
+  replicas: {{ .Values.replicaCount }}                 
+  selector:
+    matchLabels:              
+      app: {{ .Values.name }}-front-{{ .Values.version }}
+      version: {{ .Values.version }}
+  template:                   
+    metadata:
+      labels:                 
+        app: {{ .Values.name }}-front-{{ .Values.version }}
+        version: {{ .Values.version }}
+    workloadRef: 
+      apiVersion: apps/v1
+      kind: Deployment
+      name: {{ .Values.name }}-front-v1         
+  strategy:
+    blueGreen:
+      autoPromotionEnabled: false
+      activeService: {{ .Values.name }}-front-v1
+      previewService: {{ .Values.name }}-front-{{ .Values.version }}
