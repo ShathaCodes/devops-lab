@@ -6,7 +6,6 @@ metadata:
   labels:
     app: {{ .Values.name }}-front-{{ .Values.version }}
     version: {{ .Values.version }}
-    chart: {{ template "bookshop-chart.chart" . }}
 spec:
   revisionHistoryLimit: 3
   replicas: {{ .Values.replicaCount }}                 
