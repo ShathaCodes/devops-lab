@@ -6,11 +6,9 @@ metadata:
   labels:
     app: {{ .Values.name }}-back-{{ .Values.version }}
     version: {{ .Values.version }}
-    {{- range $key, $val := .Values.deploymentLabels }}
-    {{ $key }}: {{ $val | quote }}
-    {{- end}}
+    chart: {{ template "bookshop-chart.chart" . }}
 spec:
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 3
   replicas: {{ .Values.replicaCount }}                 
   selector:
     matchLabels:              
