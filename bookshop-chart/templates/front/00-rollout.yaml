@@ -46,7 +46,7 @@ metadata:
     version: {{ .Values.version }} 
   namespace: {{ .Values.namespace }}
 spec:                         
-  type: {{ .Values.front.service.type }}  	
+  type: ClusterIP	
   selector:
     app: {{ .Values.name }}-front-{{ .Values.version }}
     version: {{ .Values.version }}  
